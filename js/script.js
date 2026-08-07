@@ -139,3 +139,8 @@ document.querySelectorAll(".gallery-grid img").forEach(img=>{
 
 });
 
+window.history.scrollRestoration = "manual";
+
+window.onload = function () {
+    window.scrollTo(0, 0);
+};
