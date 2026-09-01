@@ -144,3 +144,34 @@ window.history.scrollRestoration = "manual";
 window.onload = function () {
     window.scrollTo(0, 0);
 };
+
+// ===============================
+// Mobile Hamburger Menu
+// ===============================
+
+const menuToggle = document.querySelector('#mobile-menu');
+const navLinksContainer = document.querySelector('.nav-links');
+const menuIcon = menuToggle.querySelector('i');
+
+menuToggle.addEventListener('click', () => {
+    // Toggle the menu visibility
+    navLinksContainer.classList.toggle('active');
+    
+    // Switch between hamburger and X icon
+    if(navLinksContainer.classList.contains('active')){
+        menuIcon.classList.remove('bi-list');
+        menuIcon.classList.add('bi-x-lg');
+    } else {
+        menuIcon.classList.remove('bi-x-lg');
+        menuIcon.classList.add('bi-list');
+    }
+});
+
+// Automatically close the mobile menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinksContainer.classList.remove('active');
+        menuIcon.classList.remove('bi-x-lg');
+        menuIcon.classList.add('bi-list');
+    });
+});

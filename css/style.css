@@ -27,43 +27,67 @@ header{
     z-index:999;
 }
 
-.navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 8%;
-    background:rgba(34,139,34,.95);
-    backdrop-filter:blur(12px);
-    box-shadow:0 4px 20px rgba(0,0,0,.1);
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background: rgba(34,139,34,.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    position: relative; /* Keeps the dropdown menu attached to the navbar */
 }
 
-.logo{
-    color:white;
-    font-size:1.7rem;
-    font-weight:700;
+.logo {
+    color: white;
+    font-size: 1.7rem;
+    font-weight: 700;
 }
 
-.logo i{
-    margin-right:8px;
+.logo i {
+    margin-right: 8px;
 }
 
-.nav-links{
-    display:flex;
-    list-style:none;
-    gap:30px;
+/* Make the hamburger icon visible on all screens */
+.menu-toggle {
+    display: block; 
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-weight:500;
-    transition:.3s;
+/* Hide the links by default and style them as a dropdown */
+.nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(27,94,32,.98);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    display: none; /* Hides the items */
+    list-style: none;
 }
 
-.nav-links a:hover{
-    color:#ffe082;
+/* The JavaScript will add this class to reveal the menu */
+.nav-links.active {
+    display: flex;
 }
 
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #ffe082;
+}
 /* ===========================
    HERO
 =========================== */
@@ -155,10 +179,12 @@ header{
    MEMBERS
 =========================== */
 
-.members-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 950px;
+    margin: 0 auto;
 }
 
 .member-card{
@@ -323,22 +349,20 @@ footer{
 
 @media(max-width:900px){
 
-.navbar{
-    flex-direction:column;
-    gap:20px;
-}
+    .navbar {
+        padding: 15px 6%;
+    }
 
-.nav-links{
-    flex-wrap:wrap;
-    justify-content:center;
-}
+    .hero h1 {
+        font-size: 2.2rem;
+    }
 
-.hero h1{
-    font-size:2.2rem;
-}
+    .section {
+        padding: 70px 6%;
+    }
 
-.section{
-    padding:70px 6%;
-}
+    .members-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
 
 }
